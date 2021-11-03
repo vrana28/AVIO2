@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avio.Domain", "Avio.Domain\Avio.Domain.csproj", "{08111CD2-6F40-48C9-8123-4A40692FD948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avio.Data", "Avio.Data\Avio.Data.csproj", "{AED508AA-85E1-410F-B96C-89114E6507CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08111CD2-6F40-48C9-8123-4A40692FD948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08111CD2-6F40-48C9-8123-4A40692FD948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08111CD2-6F40-48C9-8123-4A40692FD948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08111CD2-6F40-48C9-8123-4A40692FD948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AED508AA-85E1-410F-B96C-89114E6507CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AED508AA-85E1-410F-B96C-89114E6507CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AED508AA-85E1-410F-B96C-89114E6507CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AED508AA-85E1-410F-B96C-89114E6507CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF43C20F-AA29-4D3F-A4D8-B9DD1211E259}
+	EndGlobalSection
+EndGlobal
