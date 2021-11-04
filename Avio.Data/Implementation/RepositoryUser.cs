@@ -26,6 +26,8 @@ namespace Avio.Data.Implementation
             return context.User.Any(k => k.UserName == username);
         }
 
+      
+
         public void Commit()
         {
             context.SaveChanges();

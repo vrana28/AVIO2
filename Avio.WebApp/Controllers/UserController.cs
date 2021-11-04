@@ -27,17 +27,12 @@ namespace Avio.WebApp.Controllers
             return View("Login");
         }
 
-        /// <summary>
-        /// Login and checking credentials
-        /// </summary>
-        /// <param name="model">Model as User (Korisnik)</param>
-        /// <returns>Redirect to dashboard if successfuly or login page if mistake has been made</returns>
-        /// <exception cref="Exception">When credentials are not good</exception>
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
             try
             {
+                
                 User u = unitOfWork.User.GetByUsernameAndPassword(new User
                 {
                     UserName = model.Username,
@@ -46,6 +41,7 @@ namespace Avio.WebApp.Controllers
                 //ViewBag.IsLoggedIn = true;
                 HttpContext.Session.SetInt32("userid", u.UserId);
                 HttpContext.Session.SetString("username", u.UserName);
+                HttpContext.Session.SetString("typeOfUser", u.TypeOfUser.ToString());
                 HttpContext.Session.Set("user", System.Text.Json.JsonSerializer.SerializeToUtf8Bytes(u));
                 // serijalizacija celog objekta u ime sesije
                 if ((int)u.TypeOfUser == 0)
@@ -58,7 +54,7 @@ namespace Avio.WebApp.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Flights", "Flight");
+                    return RedirectToAction("Index", "Flight");
                 }
             }
             catch (Exception ex)
@@ -71,6 +67,9 @@ namespace Avio.WebApp.Controllers
         [ActionName("NewUser")]
         public ActionResult NewUser()
         {
+            ViewBag.IsLoggedIn = true;
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            ViewBag.TypeOfUser = HttpContext.Session.GetString("typeOfUser");
             return View("NewUser");
         }
 
@@ -103,6 +102,14 @@ namespace Avio.WebApp.Controllers
                 return View();
             }
         }
+
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
+        }
+
+        
 
     }
 }

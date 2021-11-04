@@ -1,7 +1,67 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@model IEnumerable<Avio.Domain.Flight>
 
-<h1>Index</h1>
-
+<p>
+    <h4 class="display-3">Flights</h4>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Arrival)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfFlight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfTransfers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Canceled)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="font-weight: 700">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Seats <= 5 && ViewBag.TypeOfUser =="Agent")
+                    {
+                        <p style="color:red">@Html.DisplayFor(modelItem => item.Departure)</p>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Departure)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Arrival)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfFlight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfTransfers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Canceled)
+                </td>
+                <td>
+                    @if (ViewBag.Username == "admin") {
+                        <a asp-controller="Flight" asp-action="Update" asp-route-id="@item.FlightId">Cancel flight</a> 
+                       }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

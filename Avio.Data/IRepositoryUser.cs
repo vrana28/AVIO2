@@ -7,5 +7,6 @@ namespace Avio.Data
     {
         User GetByUsernameAndPassword(User k);
         bool AlreadyExist(string username);
+        
     }
 }

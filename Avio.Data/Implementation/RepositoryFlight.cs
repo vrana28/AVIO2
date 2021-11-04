@@ -49,7 +49,7 @@ namespace Avio.Data.Implementation
 
         public void Update(Flight s)
         {
-            throw new NotImplementedException();
+            context.Flight.Find(s.FlightId).Canceled = true;
         }
     }
 }
