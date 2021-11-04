@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avio.Domain", "Avio.Domain\Avio.Domain.csproj", "{08111CD2-6F40-48C9-8123-4A40692FD948}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avio.Data", "Avio.Data\Avio.Data.csproj", "{AED508AA-85E1-410F-B96C-89114E6507CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avio.Data", "Avio.Data\Avio.Data.csproj", "{AED508AA-85E1-410F-B96C-89114E6507CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avio.WebApp", "Avio.WebApp\Avio.WebApp.csproj", "{BC9BC942-5983-4DA1-8E23-E24BA6599C67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AED508AA-85E1-410F-B96C-89114E6507CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AED508AA-85E1-410F-B96C-89114E6507CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AED508AA-85E1-410F-B96C-89114E6507CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC9BC942-5983-4DA1-8E23-E24BA6599C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC9BC942-5983-4DA1-8E23-E24BA6599C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC9BC942-5983-4DA1-8E23-E24BA6599C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC9BC942-5983-4DA1-8E23-E24BA6599C67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,59 @@
+﻿@model Avio.WebApp.Models.CreateFlightViewModel
+
+@{
+    ViewData["Title"] = "Avio-Flight";
+}
+
+<h1 class="display-4">Create Flight</h1>
+
+<hr />
+<div class="row">
+    <div class="w-100 p-3">
+        <form asp-action="Create" method="post" , new {enctype="multipart/form-data" }>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Flight.Departure" class="control-label"></label>
+                <select class="form-control" style="width:40%" asp-for="Flight.Departure">
+                    <option value="0"></option>
+                    <option value="1">Beograd</option>
+                    <option value="2">Nis</option>
+                    <option value="3">Kraljevo</option>
+                    <option value="4">Pristina</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flight.Arrival" class="control-label"></label>
+                <select class="form-control" style="width:40%" asp-for="Flight.Arrival">
+                    <option value="0"></option>
+                    <option value="1">Beograd</option>
+                    <option value="2">Nis</option>
+                    <option value="3">Kraljevo</option>
+                    <option value="4">Pristina</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Flight.DateOfFlight" class="control-label"></label>
+                <input asp-for="Flight.DateOfFlight" class="form-control" style="width:40%" />
+                <span asp-validation-for="Flight.DateOfFlight" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Flight.NumberOfTransfers" class="control-label"></label>
+                <input asp-for="Flight.NumberOfTransfers" class="form-control" style="width:40%" />
+                <span asp-validation-for="Flight.NumberOfTransfers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Flight.Seats" class="control-label"></label>
+                <input asp-for="Flight.Seats" class="form-control" style="width:40%" />
+                <span asp-validation-for="Flight.Seats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create flight" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

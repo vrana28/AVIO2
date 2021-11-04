@@ -1,0 +1,41 @@
+﻿@model Avio.WebApp.Models.RegisterViewModel
+
+<h4 class="display-3">Adding New User</h4>
+<hr />
+<div class="row">
+    <div class="w-100 p-3">
+        <form asp-action="NewUser" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" style="width:40%" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" style="width:40%" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" style="width:40%" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password" style="width:40%" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TypeOfUser" class="control-label"></label><br>
+                Agent:      @Html.RadioButtonFor(m => m.TypeOfUser, 1, new { Checked = "checked" })<br>
+                Posetilac:  @Html.RadioButtonFor(m => m.TypeOfUser, 2)<br>
+                <span asp-validation-for="TypeOfUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register new user" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
