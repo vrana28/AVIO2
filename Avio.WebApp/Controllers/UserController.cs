@@ -54,7 +54,7 @@ namespace Avio.WebApp.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Flight");
+                    return RedirectToAction("Search", "Flight");
                 }
             }
             catch (Exception ex)

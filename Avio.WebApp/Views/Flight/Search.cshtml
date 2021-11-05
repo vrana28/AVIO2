@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Avio.Domain.Flight>
+
+<p>
+    <h4 class="display-3">Search Flights</h4>
+</p>
+
+<form asp-controller="Flight" asp-action="Search" method="get">
+    <p>
+        <div class="form-group">
+            <label class="control-label"> Deaprture place:</label>
+            <select class="form-control" style="width:40%" name="departure">
+                <option value="0"></option>
+                <option value="1">Beograd</option>
+                <option value="2">Nis</option>
+                <option value="3">Kraljevo</option>
+                <option value="4">Pristina</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label"> Arrival place:</label>
+            <select class="form-control" style="width:40%" name="arrival">
+                <option value="0"></option>
+                <option value="1">Beograd</option>
+                <option value="2">Nis</option>
+                <option value="3">Kraljevo</option>
+                <option value="4">Pristina</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Date of flight:</label>
+            <input class="form-control" type="date" style="width:40%" name="date"/>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label">Without transfer:</label>
+            <input class="custom-radio" type="checkbox"  name="notransfer" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Search flight" class="btn btn-primary" />
+        </div>
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Arrival)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfFlight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfTransfers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Canceled)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="font-weight: 700">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Seats <= 5 && ViewBag.TypeOfUser == "Agent")
+                    {
+                        <p style="color:red">@Html.DisplayFor(modelItem => item.Departure)</p>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Departure)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Arrival)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfFlight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfTransfers)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Canceled)
+                </td>
+                <td>
+                    @if (ViewBag.TypeOfUser == "Visitor" && item.Canceled == false && item.Seats>0 && (item.DateOfFlight - DateTime.Now ).TotalDays > 3 )
+                    {
+                        <a asp-controller="Flight" asp-action="Update" asp-route-id="@item.FlightId">Make reservation</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

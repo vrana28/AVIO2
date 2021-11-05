@@ -57,7 +57,7 @@
                     @Html.DisplayFor(modelItem => item.Canceled)
                 </td>
                 <td>
-                    @if (ViewBag.Username == "admin") {
+                    @if (ViewBag.Username == "admin" && item.Canceled == false) {
                         <a asp-controller="Flight" asp-action="Update" asp-route-id="@item.FlightId">Cancel flight</a> 
                        }
                 </td>
