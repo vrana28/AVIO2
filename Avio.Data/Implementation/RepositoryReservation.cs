@@ -16,7 +16,7 @@ namespace Avio.Data.Implementation
 
         public void Add(Reservation s)
         {
-            throw new NotImplementedException();
+            context.Add(s);
         }
 
         public void AddReservation(List<Reservation> listOfReservation, List<Reservation> oldReservation)

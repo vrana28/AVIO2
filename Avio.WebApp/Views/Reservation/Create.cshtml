@@ -1,0 +1,51 @@
+﻿@model Avio.WebApp.Models.MakeReservation;
+
+@{
+    ViewData["Title"] = "Avio-Flight";
+}
+
+<h1 class="display-4">Make Reservation</h1>
+
+<hr />
+<div class="row">
+    <div class="w-100 p-3">
+        <form asp-action="Create" method="post" , new {enctype="multipart/form-data" }>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Flight: @Model.FlightId </label><br />
+                <input asp-for="FlightId" type="hidden" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">User Id: @Model.UserId </label><br />
+                <input asp-for="UserId" type="hidden" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">User: @Model.Reservation.User.FirstName @Model.Reservation.User.LastName </label><br />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Relation: @Model.Reservation.Flight.Departure - @Model.Reservation.Flight.Arrival </label><br />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Date of flight: @Model.Reservation.Flight.DateOfFlight </label><br />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reservation.ReservedSeats" class="control-label">Free seats: @Model.Reservation.Flight.Seats</label><br />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Reserved seats: </label><br />
+                <input asp-for="Reservation.ReservedSeats" type="number" min="1" max="10" class="mb-4" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Make reservation" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

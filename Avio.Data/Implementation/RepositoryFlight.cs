@@ -51,5 +51,10 @@ namespace Avio.Data.Implementation
         {
             context.Flight.Find(s.FlightId).Canceled = true;
         }
+
+        public void UpdateSeats(Flight f, int reservedSeats)
+        {
+            context.Flight.Find(f.FlightId).Seats = context.Flight.Find(f.FlightId).Seats - reservedSeats;
+        }
     }
 }

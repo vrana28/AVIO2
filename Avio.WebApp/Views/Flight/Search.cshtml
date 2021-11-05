@@ -97,7 +97,7 @@
                 <td>
                     @if (ViewBag.TypeOfUser == "Visitor" && item.Canceled == false && item.Seats>0 && (item.DateOfFlight - DateTime.Now ).TotalDays > 3 )
                     {
-                        <a asp-controller="Flight" asp-action="Update" asp-route-id="@item.FlightId">Make reservation</a>
+                        <a asp-controller="Reservation" asp-action="Create" asp-route-id="@item.FlightId" >Make reservation</a>
                     }
                 </td>
             </tr>

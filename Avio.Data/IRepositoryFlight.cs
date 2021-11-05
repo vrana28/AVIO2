@@ -10,6 +10,6 @@ namespace Avio.Data
     {
 
         List<Flight> Search(Expression<Func<Flight, bool>> p);
-
+        void UpdateSeats(Flight f, int reservedSeats);
     }
 }
