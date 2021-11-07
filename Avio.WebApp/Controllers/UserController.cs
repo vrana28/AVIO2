@@ -80,6 +80,9 @@ namespace Avio.WebApp.Controllers
         {
             try
             {
+                ViewBag.IsLoggedIn = true;
+                ViewBag.Username = HttpContext.Session.GetString("username");
+                ViewBag.TypeOfUser = HttpContext.Session.GetString("typeOfUser");
                 if (model.FirstName == null || model.LastName == null || model.Username == null || model.Password == null ) throw new Exception();
                 bool exist = unitOfWork.User.AlreadyExist(model.Username);
                 if (exist) throw new Exception();

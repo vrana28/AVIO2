@@ -1,6 +1,7 @@
 ﻿using AvioProject;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Avio.Data.Implementation
@@ -36,12 +37,12 @@ namespace Avio.Data.Implementation
 
         public Reservation Find(int id)
         {
-            throw new NotImplementedException();
+            return context.Reservation.Find(id);
         }
 
         public List<Reservation> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Reservation.ToList();
         }
 
         public List<Reservation> GetAllWithId(int id)
@@ -51,7 +52,7 @@ namespace Avio.Data.Implementation
 
         public void Update(Reservation s)
         {
-            throw new NotImplementedException();
+            context.Reservation.Find(s.ReservationId).Status = true;
         }
     }
 }

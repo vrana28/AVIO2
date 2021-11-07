@@ -76,5 +76,65 @@ namespace Avio.WebApp.Controllers
             }
         }
 
+        public ActionResult Index() {
+            ViewBag.IsLoggedIn = true;
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            ViewBag.TypeOfUser = HttpContext.Session.GetString("typeOfUser");
+            ViewBag.TypeOfUser = HttpContext.Session.GetString("typeOfUser");
+            List<Reservation> model = unitOfWork.Reservation.GetAll();
+            model = model.Where(m=> m.UserId == (int)HttpContext.Session.GetInt32("userid")).ToList();
+
+            List<MakeReservation> lista = new List<MakeReservation>();
+            foreach (Reservation r in model) {
+                r.Flight = unitOfWork.Flight.Find(r.FlightId);
+                MakeReservation r1 = new MakeReservation
+                {
+                    Reservation = r,
+                    FlightId = r.FlightId,
+                    UserId = r.UserId
+                };
+                lista.Add(r1);
+            }
+            
+            return View(lista);
+        }
+
+        public ActionResult Index2()
+        {
+            ViewBag.IsLoggedIn = true;
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            ViewBag.TypeOfUser = HttpContext.Session.GetString("typeOfUser");
+            ViewBag.TypeOfUser = HttpContext.Session.GetString("typeOfUser");
+            List<Reservation> model = unitOfWork.Reservation.GetAll();
+
+            List<MakeReservation> lista = new List<MakeReservation>();
+            foreach (Reservation r in model)
+            {
+                r.Flight = unitOfWork.Flight.Find(r.FlightId);
+                r.User = unitOfWork.User.Find(r.UserId);
+                MakeReservation r1 = new MakeReservation
+                {
+                    Reservation = r,
+                    FlightId = r.FlightId,
+                    UserId = r.UserId
+                };
+                lista.Add(r1);
+            }
+
+            return View(lista);
+        }
+
+        public ActionResult Update(int id)
+        {
+            ViewBag.IsLoggedIn = true;
+            ViewBag.Username = HttpContext.Session.GetString("username");
+            ViewBag.TypeOfUser = HttpContext.Session.GetString("typeOfUser");
+
+            Reservation r = unitOfWork.Reservation.Find(id);
+            unitOfWork.Reservation.Update(r);
+            unitOfWork.Commit();
+            return RedirectToAction("Index2");
+        }
+
     }
 }

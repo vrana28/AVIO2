@@ -1,0 +1,56 @@
+﻿@model IEnumerable< MakeReservation >
+
+<p>
+    <h4 class="display-3">My Reservations</h4>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation.ReservationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation.Flight.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation.Flight.Arrival)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation.Flight.DateOfFlight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation.ReservedSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style="font-weight: 700">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.ReservationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.Flight.Departure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.Flight.Arrival)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.Flight.DateOfFlight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.ReservedSeats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reservation.Status)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
